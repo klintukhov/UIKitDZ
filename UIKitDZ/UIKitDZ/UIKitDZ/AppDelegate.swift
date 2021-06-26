@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  UIKitDZ
 //
-//  Created by Григорий Клинтухов on 23/06/2021.
+//  Created by Григорий Клинтухов on 26/06/2021.
 //
 
 import UIKit
