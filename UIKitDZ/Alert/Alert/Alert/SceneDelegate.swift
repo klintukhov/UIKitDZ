@@ -1,8 +1,8 @@
 //
 //  SceneDelegate.swift
-//  UIKitDZ
+//  Alert
 //
-//  Created by Григорий Клинтухов on 23/06/2021.
+//  Created by Григорий Клинтухов on 27/06/2021.
 //
 
 import UIKit
