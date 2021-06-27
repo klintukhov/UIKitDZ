@@ -15,12 +15,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+
     // Creating buttons
-
-
      let greet = UILabel(frame: CGRect(x: 67, y: 300, width: 320, height: 40))
      let buttonOne = UIButton(frame: CGRect(x: 40, y: 620, width: 140, height: 35))
      let buttonTwo = UIButton(frame: CGRect(x: 40, y: 700, width: 140, height: 35))
+    
      override func viewDidLoad() {
          super.viewDidLoad()
          // Do any additional setup after loading the view.
@@ -29,17 +29,17 @@ class ViewController: UIViewController {
      override func viewDidAppear(_ animated: Bool) {
          firstAlert()
      }
-    // Creating inscription
+    
+         // Creating inscription
      func createViews() {
          self.greet.font = UIFont(name: "Arial", size: 25)
          self.greet.textAlignment = .center
          self.greet.text = "Welcome,"
 
          // button addition numbers
-        
          self.buttonOne.setTitle("Addition", for: .normal)
-        
-         self.buttonOne.setTitle("Wait please", for: .highlighted) // peshed button
+        // pushed button
+         self.buttonOne.setTitle("Wait please", for: .highlighted)
 
          self.buttonOne.backgroundColor = .systemGray // color button
          self.buttonOne.addTarget(self, action: #selector(addition(sender:)), for: .touchUpInside)
@@ -48,10 +48,11 @@ class ViewController: UIViewController {
 
             // button guess the number
          self.buttonTwo.setTitle("Guess number", for: .normal)
-        self.buttonTwo.setTitle("Wait please", for: .highlighted) // pushed button
-
+        // pushed button
+         self.buttonTwo.setTitle("Wait please", for: .highlighted)
          self.buttonTwo.backgroundColor = .systemGray
          self.buttonTwo.addTarget(self, action: #selector(guessTheNumber(sender:)), for: .touchUpInside)
+        
             //  button rounding
          self.buttonTwo.layer.cornerRadius = 3
          self.view.addSubview(self.buttonOne)
@@ -76,9 +77,8 @@ class ViewController: UIViewController {
 
      }
 
-        // outputing different messages
-    
-     func otherAlert(title: String,message: String, preferredStyle: UIAlertController.Style )  {
+    // outputing different messages
+    func forAlert(title: String,message: String, preferredStyle: UIAlertController.Style )  {
          let alertControl = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
          let actionOk = UIAlertAction(title: "Ok", style: .default)
@@ -97,11 +97,11 @@ class ViewController: UIViewController {
                     sum += Int(number) ?? 0
                  }
              }
-             self.otherAlert(title: "Result", message: "The sum is: \(sum)", preferredStyle: .alert)
+             self.forAlert(title: "Result", message: "The sum is: \(sum)", preferredStyle: .alert)
          }
          let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-
-         alertControls.addTextField(configurationHandler: nil)// dobavilo 2 polia
+        // adding 2 text fields
+         alertControls.addTextField(configurationHandler: nil)
          alertControls.addTextField(configurationHandler: nil)
 
          alertControls.addAction(actionOk)
@@ -119,9 +119,9 @@ class ViewController: UIViewController {
              if let inputedNumber = alertControls.textFields?.first?.text {
                  print(inputedNumber)
                  if number == Int(inputedNumber) {
-                     self.otherAlert(title: "New attempt", message: "Great! You guessed", preferredStyle: .actionSheet)
+                     self.forAlert(title: "New attempt", message: "Great! You guessed", preferredStyle: .actionSheet)
                  } else {
-                     self.otherAlert(title: "New attempt", message: "Sorry, try again!", preferredStyle: .actionSheet)
+                     self.forAlert(title: "New attempt", message: "Sorry, try again!", preferredStyle: .actionSheet)
                  }
              }
          }
