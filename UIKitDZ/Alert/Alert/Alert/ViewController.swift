@@ -18,9 +18,9 @@ class ViewController: UIViewController {
     // Creating buttons
 
 
-     let greet = UILabel(frame: CGRect(x: 67, y: 183, width: 300, height: 36))
-     let buttonOne = UIButton(frame: CGRect(x: 51, y: 661, width: 140, height: 40))
-     let buttonTwo = UIButton(frame: CGRect(x: 243, y: 661, width: 140, height: 40))
+     let greet = UILabel(frame: CGRect(x: 67, y: 300, width: 300, height: 36))
+     let buttonOne = UIButton(frame: CGRect(x: 51, y: 700, width: 140, height: 40))
+     let buttonTwo = UIButton(frame: CGRect(x: 243, y: 700, width: 140, height: 40))
      override func viewDidLoad() {
          super.viewDidLoad()
          // Do any additional setup after loading the view.
@@ -31,9 +31,9 @@ class ViewController: UIViewController {
      }
     // Creating inscription
      func createViews() {
-         self.greet.font = UIFont(name: "Arial", size: 30)
+         self.greet.font = UIFont(name: "Arial", size: 25)
          self.greet.textAlignment = .center
-         self.greet.text = "Hi,"
+         self.greet.text = "Welcome,"
 
          // button addition numbers
         
@@ -58,11 +58,12 @@ class ViewController: UIViewController {
 
             // start programm messege
      func firstAlert()  {
-        let alertControl = UIAlertController(title: "Сообщение", message: "Введите ФИО", preferredStyle: .alert)
+        let alertControl = UIAlertController(title: "Message", message: "Enter your name", preferredStyle: .alert)
 
          let actionOk = UIAlertAction(title: "Ok", style: .default) { _ in
              let text = alertControl.textFields?.first?.text
-             self.greet.text = "Hi, " + (text ?? " ")
+            self.greet.text = "Hello,  " + (text ?? " ") + "   Lets go!"
+
          }
 
          alertControl.addTextField(configurationHandler: nil)
@@ -86,14 +87,14 @@ class ViewController: UIViewController {
      @objc func addition(sender: UIButton) {
          var sum = 0
 
-         let alertControls = UIAlertController(title: "Сложение", message: "Введите числа для сложения", preferredStyle: .alert)
+         let alertControls = UIAlertController(title: "Addition", message: "Enter numbers for addition", preferredStyle: .alert)
          let actionOk = UIAlertAction(title: "Ok", style: .default) { [self] _ in
              for i in alertControls.textFields! {
                  if let number = i.text {
                     sum += Int(number) ?? 0
                  }
              }
-             self.otherAlert(title: "Результат", message: "Сумма чисел равна: \(sum)", preferredStyle: .alert)
+             self.otherAlert(title: "Result", message: "The sum is: \(sum)", preferredStyle: .alert)
          }
          let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
@@ -106,18 +107,18 @@ class ViewController: UIViewController {
          self.present(alertControls, animated: true, completion: nil)
      }
 
-     //MARK: Реализация функции угадай число
+     // realisation of function --> Guess the number
      @objc func guessTheNumber(sender:UIButton) {
-         let number = Int.random(in: 1...10)
-         let alertControls = UIAlertController(title: "Викторина", message: "Угадай число от 1 до 10", preferredStyle: .alert)
+         let number = Int.random(in: 1...5)
+         let alertControls = UIAlertController(title: "Guess game", message: "Guess the number from 1 to 5", preferredStyle: .alert)
           print(number)
          let actionOk = UIAlertAction.init(title: "Ok", style: .default) { _ in
              if let inputedNumber = alertControls.textFields?.first?.text {
                  print(inputedNumber)
                  if number == Int(inputedNumber) {
-                     self.otherAlert(title: "Викторина", message: "Вы угадали!", preferredStyle: .actionSheet)
+                     self.otherAlert(title: "New attempt", message: "Great! You guessed", preferredStyle: .actionSheet)
                  } else {
-                     self.otherAlert(title: "Викторина", message: "Вы проиграли!", preferredStyle: .actionSheet)
+                     self.otherAlert(title: "New attempt", message: "Sorry, try again!", preferredStyle: .actionSheet)
                  }
              }
          }
