@@ -16,10 +16,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-
-     let myLabel = UILabel(frame: CGRect(x: 67, y: 183, width: 300, height: 36))
-     let firstButton = UIButton(frame: CGRect(x: 51, y: 661, width: 140, height: 40))
-     let secondButton = UIButton(frame: CGRect(x: 243, y: 661, width: 140, height: 40))
+    // Creating buttons
+     let greet = UILabel(frame: CGRect(x: 67, y: 183, width: 300, height: 36))
+     let buttonOne = UIButton(frame: CGRect(x: 51, y: 661, width: 140, height: 40))
+     let buttonTwo = UIButton(frame: CGRect(x: 243, y: 661, width: 140, height: 40))
      override func viewDidLoad() {
          super.viewDidLoad()
          // Do any additional setup after loading the view.
@@ -28,39 +28,40 @@ class ViewController: UIViewController {
      override func viewDidAppear(_ animated: Bool) {
          firstAlert()
      }
-
+    // Creating inscription
      func createViews() {
-         //MARK: создаем надпись
-         self.myLabel.font = UIFont(name: "Arial", size: 30)
-         self.myLabel.textAlignment = .center
-         self.myLabel.text = "Hi,"
+         self.greet.font = UIFont(name: "Arial", size: 30)
+         self.greet.textAlignment = .center
+         self.greet.text = "Hi,"
 
-         //MARK: кнопка сложения чисел
+         // button addition numbers
         
-         self.firstButton.setTitle("Сложить", for: .normal)
-         self.firstButton.setTitle("nazhato slozhut", for: .highlighted)
+         self.buttonOne.setTitle("Сложить", for: .normal)
+         self.buttonOne.setTitle("nazhato slozhut", for: .highlighted)
 
-        self.firstButton.backgroundColor = .systemGray // color button
-         self.firstButton.addTarget(self, action: #selector(addition(sender:)), for: .touchUpInside)
-         self.firstButton.layer.cornerRadius = 3 // zakruglenie
+         self.buttonOne.backgroundColor = .systemGray // color button
+         self.buttonOne.addTarget(self, action: #selector(addition(sender:)), for: .touchUpInside)
+            //  button rounding
+         self.buttonOne.layer.cornerRadius = 3
 
-         //MARK: кнопка угадай число
-         self.secondButton.setTitle("Угадай число", for: .normal)
-         self.secondButton.backgroundColor = .systemGray
-         self.secondButton.addTarget(self, action: #selector(guessTheNumber(sender:)), for: .touchUpInside)
-         self.secondButton.layer.cornerRadius = 5
-         self.view.addSubview(self.firstButton)
-         self.view.addSubview(self.secondButton)
-         self.view.addSubview(self.myLabel)
+            // button guess the number
+         self.buttonTwo.setTitle("Угадай число", for: .normal)
+         self.buttonTwo.backgroundColor = .systemGray
+         self.buttonTwo.addTarget(self, action: #selector(guessTheNumber(sender:)), for: .touchUpInside)
+            //  button rounding
+         self.buttonTwo.layer.cornerRadius = 5
+         self.view.addSubview(self.buttonOne)
+         self.view.addSubview(self.buttonTwo)
+         self.view.addSubview(self.greet)
      }
 
-     //MARK: сообщение при старте программы
+            // start programm messege
      func firstAlert()  {
         let alertControl = UIAlertController(title: "Сообщение", message: "Введите ФИО", preferredStyle: .alert)
 
          let actionOk = UIAlertAction(title: "Ok", style: .default) { _ in
              let text = alertControl.textFields?.first?.text
-             self.myLabel.text = "Hi, " + (text ?? " ")
+             self.greet.text = "Hi, " + (text ?? " ")
          }
 
          alertControl.addTextField(configurationHandler: nil)
@@ -70,7 +71,8 @@ class ViewController: UIViewController {
 
      }
 
-     //MARK: для вывода разных сообщений
+        // outputing different messages
+    
      func otherAlert(title: String,message: String, preferredStyle: UIAlertController.Style )  {
          let alertControl = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 
