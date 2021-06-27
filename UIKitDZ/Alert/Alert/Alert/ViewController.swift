@@ -18,9 +18,9 @@ class ViewController: UIViewController {
     // Creating buttons
 
 
-     let greet = UILabel(frame: CGRect(x: 67, y: 300, width: 300, height: 36))
-     let buttonOne = UIButton(frame: CGRect(x: 51, y: 700, width: 140, height: 40))
-     let buttonTwo = UIButton(frame: CGRect(x: 243, y: 700, width: 140, height: 40))
+     let greet = UILabel(frame: CGRect(x: 67, y: 300, width: 320, height: 40))
+     let buttonOne = UIButton(frame: CGRect(x: 40, y: 620, width: 140, height: 35))
+     let buttonTwo = UIButton(frame: CGRect(x: 40, y: 700, width: 140, height: 35))
      override func viewDidLoad() {
          super.viewDidLoad()
          // Do any additional setup after loading the view.
@@ -37,8 +37,9 @@ class ViewController: UIViewController {
 
          // button addition numbers
         
-         self.buttonOne.setTitle("Сложить", for: .normal)
-         self.buttonOne.setTitle("nazhato slozhut", for: .highlighted)
+         self.buttonOne.setTitle("Addition", for: .normal)
+        
+         self.buttonOne.setTitle("Wait please", for: .highlighted) // peshed button
 
          self.buttonOne.backgroundColor = .systemGray // color button
          self.buttonOne.addTarget(self, action: #selector(addition(sender:)), for: .touchUpInside)
@@ -46,11 +47,13 @@ class ViewController: UIViewController {
          self.buttonOne.layer.cornerRadius = 3
 
             // button guess the number
-         self.buttonTwo.setTitle("Угадай число", for: .normal)
+         self.buttonTwo.setTitle("Guess number", for: .normal)
+        self.buttonTwo.setTitle("Wait please", for: .highlighted) // pushed button
+
          self.buttonTwo.backgroundColor = .systemGray
          self.buttonTwo.addTarget(self, action: #selector(guessTheNumber(sender:)), for: .touchUpInside)
             //  button rounding
-         self.buttonTwo.layer.cornerRadius = 5
+         self.buttonTwo.layer.cornerRadius = 3
          self.view.addSubview(self.buttonOne)
          self.view.addSubview(self.buttonTwo)
          self.view.addSubview(self.greet)
@@ -83,7 +86,7 @@ class ViewController: UIViewController {
          self.present(alertControl, animated: true, completion: nil)
      }
 
-     //MARK: Запрос и сложение чисел в алерте
+        // realization of sum of numbers in alert
      @objc func addition(sender: UIButton) {
          var sum = 0
 
